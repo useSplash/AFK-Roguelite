@@ -12,8 +12,15 @@ public class DamagePopup : MonoBehaviour
         textMesh = GetComponent<TextMeshPro>();
     }
 
-    public void Setup()
+    public void Setup(int damageAmount)
     {
+        textMesh.SetText(damageAmount.ToString());
+        Destroy(gameObject, 0.7f);
+    }
 
+    private void Update()
+    {
+        float moveSpeedY = 2f;
+        transform.position += new Vector3(0, moveSpeedY) * Time.deltaTime;
     }
 }
