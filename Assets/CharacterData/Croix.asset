@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab03e538a922b243ba9049adc106187, type: 3}
+  m_Name: Croix
+  m_EditorClassIdentifier: 
+  characterName: Croix
+  characterSprite: {fileID: 21300000, guid: cddc98f2f04e2be48916a02c3f5bee4d, type: 3}
+  baseHealth: 30
+  baseAttackPower: 20
+  baseDefense: 5
+  basicAttackWindupDuration: 0.2
+  basicAttackRecoilDuration: 0.2
+  basicAttackType: 0
+  pfBasicAttack: {fileID: 3850963807697843301, guid: bfe7d30d71799bf4782c7e28aae51c1b, type: 3}
+  triggerBasicAttackWindup: AttackWindup3
+  triggerBasicAttackRelease: AttackRelease1
+  triggerBasicAttackReel: AttackReel1
+  specialAbilityWindupDuration: 0.5
+  specialAbilityRecoilDuration: 1
+  specialAbilityCooldown: 10
+  specialAbilityType: 4
+  pfSpecialAbility: {fileID: 4053901271678752316, guid: a43d5c31c342517418b5fd7aec69a0cf, type: 3}
+  triggerSpecialAbilityWindup: AttackWindup1
+  triggerSpecialAbilityRelease: AttackRelease3
+  triggerSpecialAbilityReel: AttackReel2

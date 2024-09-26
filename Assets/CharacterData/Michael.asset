@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab03e538a922b243ba9049adc106187, type: 3}
+  m_Name: Michael
+  m_EditorClassIdentifier: 
+  characterName: Michael
+  characterSprite: {fileID: 21300000, guid: 64c368ae3c0b8c04293006e3ad7bfcfe, type: 3}
+  baseHealth: 200
+  baseAttackPower: 20
+  baseDefense: 30
+  basicAttackWindupDuration: 1
+  basicAttackRecoilDuration: 1.5
+  basicAttackType: 0
+  pfBasicAttack: {fileID: 5160705620718297597, guid: 691afb6fda26a804caf11eed67808826, type: 3}
+  triggerBasicAttackWindup: AttackWindup1
+  triggerBasicAttackRelease: AttackRelease1
+  triggerBasicAttackReel: AttackReel1
+  specialAbilityWindupDuration: 3
+  specialAbilityRecoilDuration: 2
+  specialAbilityCooldown: 10
+  specialAbilityType: 0
+  pfSpecialAbility: {fileID: 5160705620718297597, guid: 691afb6fda26a804caf11eed67808826, type: 3}
+  triggerSpecialAbilityWindup: AttackWindup1
+  triggerSpecialAbilityRelease: AttackRelease1
+  triggerSpecialAbilityReel: AttackReel1

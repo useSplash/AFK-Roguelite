@@ -1,0 +1,1869 @@
+fileFormatVersion: 2
+guid: 4ddb9bba7306c8b429f20d0c37606fc9
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ba2d76e601ac84bb72ceacdfa49f2f
+      internalID: -552875152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd565958dfdb0647ab94f7f93417822
+      internalID: 623270870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b2f7c8db6adb142a76dc2481d45e49
+      internalID: 1671273720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d95e84ad7d3b6c94c8a682ce13893aec
+      internalID: 898440611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fe5866cfa0461f4896ed314d45c7450
+      internalID: -949454457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4099242e0c2a214a800ddfc0c2916b6
+      internalID: -1015400229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f728e97772db7e448200c4abf72afec
+      internalID: -1404909011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 744
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02a6c8da2705f004594de16a62365bd3
+      internalID: 725818005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88dc01286f6b6de4e966af2b2f6a956a
+      internalID: -1298955062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7844a5961fbeef74eb2f9583f107a9d4
+      internalID: -2028175757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33fbfeac7deb50a4aa2588a352af4a59
+      internalID: -488069817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65b1966ea016a9b40a479a5156d98712
+      internalID: -1221709327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b9d478a90c5bad44991215f12659b37
+      internalID: -2098565834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f8576bc3225427469feb325f76bd2f8
+      internalID: -759561593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2665857eb69fd9a41a2f52de84b26284
+      internalID: -1466114812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b668ad445e79844ad3f4e934418f97
+      internalID: 712524877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 651
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1c233e429dbdb4d8585929dfd38bfe
+      internalID: -1384182808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e811947ed1b7cac4c8fa600822d8641d
+      internalID: -625622939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 150b19735783ad34481d44d2a592fbc0
+      internalID: -1546787962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fd3cc745b887b49a65ddcdd8b0f9ba
+      internalID: -957446224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bf740a3668157a4187e361990602c58
+      internalID: 1212291361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633c320ab1b290346836204cfecffaa6
+      internalID: -1113313708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b901cef9655eb547971f7c20e476719
+      internalID: -271878228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecacaa091764a9540bd13366a67da107
+      internalID: 113257093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ebae9b8024e19647a62952cbde42522
+      internalID: -777703177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 558
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 750e31bfb21677247a294512838b9d3e
+      internalID: 327419267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc0275125864e74ea5c056c35ac545d
+      internalID: -564584635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63bd5c29da6d3c459c246af2f96a0c2
+      internalID: 968738355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2debd711765eaa64e8a61b034a304425
+      internalID: -1650006241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2012551393e36143933ae986c26a822
+      internalID: 1563922763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da2962a571f74147a642fad5f34888e
+      internalID: -190156015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c989bd9057d0ab14184cbef93e4d9466
+      internalID: -1254906857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55a86a2ed40cf6b458076bd4d1696040
+      internalID: 1988143816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d11043e0b8aa41e4981a95dc7433634d
+      internalID: 1822164640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 465
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 596f918a37ece66429822b54c1d797b5
+      internalID: -131544492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77bbd2d15dbb844ead5ec5ed6019a7d
+      internalID: -811215563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0965b7c182a2be54293dcefeda6898f3
+      internalID: -1062169937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2049c647fa66764eb0e2f12f7f4ebe5
+      internalID: -1040828196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe3fe9c0ee4e683429c5043925ec7b25
+      internalID: 536002413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39665a73d014cc64b837dc72990e0822
+      internalID: 476010748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df22458f85aa45948ace16a7a0441e40
+      internalID: -1836786069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_41
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6ee2e5e2648f604a87cff1b4cca771a
+      internalID: -726641533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_42
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d282e04dbbc2d47ad33e674b80b25f
+      internalID: -1974731592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_43
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 372
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5498a9937bf1c43b9d65cf540f5c3a
+      internalID: 412468911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4828faf294b0a064584e67f49cd4b715
+      internalID: 2132184037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_45
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d427cecb7bc2d149a4ffc820716ca02
+      internalID: 1987625286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_46
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3ad39c068cca54f87a92446071da99
+      internalID: 1477077299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_47
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a54a6f450dea13f439ba83c5c5161ee0
+      internalID: 72154857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_48
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f5760ef78b90342a1c268a1c1eb590
+      internalID: 279483032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_49
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 335bbfeda9dbe7741a6a613260d642cf
+      internalID: 744534126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_50
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50ffe4cf9ba76d14e944ea95111f1614
+      internalID: 99239135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_51
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b40ddbdb214a86c4eb6cf8905d4eba85
+      internalID: -1819989106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_52
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 279
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208dea15292a6eb42a2b380a70d972c2
+      internalID: -1560310075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4256fb7250d51847aa7fb4f2450e582
+      internalID: -902755196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_54
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b0ec43ac36b08438faeeaa78761d76
+      internalID: -357418962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_55
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9cb6bc1fbd8fe47a89ddf70232bda8
+      internalID: -1101395729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_56
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08f9de1d98f3ec428fb252757c9f0e7
+      internalID: -2014967525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_57
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3934f9c533e3a7448b4eccd94da2832
+      internalID: 962991518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_58
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 724ebb198669857439ced33b0477d06c
+      internalID: -820442156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_59
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19cae41480cbac54a801a76d7e041399
+      internalID: 2121614712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_60
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4490278756846b4096594a4ddbaa205
+      internalID: -531229099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_61
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 186
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58627e06f36ce146a2c3de0d3cc088f
+      internalID: 2073253340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b10cb5deefbcec745ad84ce467019ce5
+      internalID: 1466606238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_63
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d5e50a499b12f47acd976c330fe9f3
+      internalID: -1951698304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_64
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51603938dd4d47d4a9516075c8a95de0
+      internalID: 105131010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_65
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c35496d0be1e5074da6109b7e54e307a
+      internalID: 106123200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_66
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64659dd8fb4a06e4b820d497a567c0ec
+      internalID: -1742615644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_67
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aad5ef3fba40244fa36d47f5ca0d2f6
+      internalID: 1835497939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_68
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fc8e097b6c8e646aabc9320f9b3066
+      internalID: -1862927358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_69
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a47f10c6032b714cb4d995b241e4d97
+      internalID: 1182455846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_70
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 93
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808e84da116102c41849ab329ab5278e
+      internalID: -1630429315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_71
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0058577c5f606ad4a93510a0cc6452d5
+      internalID: -1916379101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_72
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae602739f6a327a48acb3a47e6a9cd45
+      internalID: 810136547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_73
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db2c496b4b367f041ad722bab8fd23e9
+      internalID: -2143586493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_74
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8a5a1aef8987d4d8233ca9c9a2b423
+      internalID: 1406805541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_75
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88691af53e5456549ba23abfb3566818
+      internalID: -1457387771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_76
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c7afa3e0fb5b44f8e79283e22c2c9f
+      internalID: 929890866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: white_splatter_spritesheet_77
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 0
+        width: 110
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d024498e32a2a4c43a7022ac566a2cd8
+      internalID: 1631142216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      white_splatter_spritesheet_0: -552875152
+      white_splatter_spritesheet_1: 623270870
+      white_splatter_spritesheet_10: -488069817
+      white_splatter_spritesheet_11: -1221709327
+      white_splatter_spritesheet_12: -2098565834
+      white_splatter_spritesheet_13: -759561593
+      white_splatter_spritesheet_14: -1466114812
+      white_splatter_spritesheet_15: 712524877
+      white_splatter_spritesheet_16: -1384182808
+      white_splatter_spritesheet_17: -625622939
+      white_splatter_spritesheet_18: -1546787962
+      white_splatter_spritesheet_19: -957446224
+      white_splatter_spritesheet_2: 1671273720
+      white_splatter_spritesheet_20: 1212291361
+      white_splatter_spritesheet_21: -1113313708
+      white_splatter_spritesheet_22: -271878228
+      white_splatter_spritesheet_23: 113257093
+      white_splatter_spritesheet_24: -777703177
+      white_splatter_spritesheet_25: 327419267
+      white_splatter_spritesheet_26: -564584635
+      white_splatter_spritesheet_27: 968738355
+      white_splatter_spritesheet_28: -1650006241
+      white_splatter_spritesheet_29: 1563922763
+      white_splatter_spritesheet_3: 898440611
+      white_splatter_spritesheet_30: -190156015
+      white_splatter_spritesheet_31: -1254906857
+      white_splatter_spritesheet_32: 1988143816
+      white_splatter_spritesheet_33: 1822164640
+      white_splatter_spritesheet_34: -131544492
+      white_splatter_spritesheet_35: -811215563
+      white_splatter_spritesheet_36: -1062169937
+      white_splatter_spritesheet_37: -1040828196
+      white_splatter_spritesheet_38: 536002413
+      white_splatter_spritesheet_39: 476010748
+      white_splatter_spritesheet_4: -949454457
+      white_splatter_spritesheet_40: -1836786069
+      white_splatter_spritesheet_41: -726641533
+      white_splatter_spritesheet_42: -1974731592
+      white_splatter_spritesheet_43: 412468911
+      white_splatter_spritesheet_44: 2132184037
+      white_splatter_spritesheet_45: 1987625286
+      white_splatter_spritesheet_46: 1477077299
+      white_splatter_spritesheet_47: 72154857
+      white_splatter_spritesheet_48: 279483032
+      white_splatter_spritesheet_49: 744534126
+      white_splatter_spritesheet_5: -1015400229
+      white_splatter_spritesheet_50: 99239135
+      white_splatter_spritesheet_51: -1819989106
+      white_splatter_spritesheet_52: -1560310075
+      white_splatter_spritesheet_53: -902755196
+      white_splatter_spritesheet_54: -357418962
+      white_splatter_spritesheet_55: -1101395729
+      white_splatter_spritesheet_56: -2014967525
+      white_splatter_spritesheet_57: 962991518
+      white_splatter_spritesheet_58: -820442156
+      white_splatter_spritesheet_59: 2121614712
+      white_splatter_spritesheet_6: -1404909011
+      white_splatter_spritesheet_60: -531229099
+      white_splatter_spritesheet_61: 2073253340
+      white_splatter_spritesheet_62: 1466606238
+      white_splatter_spritesheet_63: -1951698304
+      white_splatter_spritesheet_64: 105131010
+      white_splatter_spritesheet_65: 106123200
+      white_splatter_spritesheet_66: -1742615644
+      white_splatter_spritesheet_67: 1835497939
+      white_splatter_spritesheet_68: -1862927358
+      white_splatter_spritesheet_69: 1182455846
+      white_splatter_spritesheet_7: 725818005
+      white_splatter_spritesheet_70: -1630429315
+      white_splatter_spritesheet_71: -1916379101
+      white_splatter_spritesheet_72: 810136547
+      white_splatter_spritesheet_73: -2143586493
+      white_splatter_spritesheet_74: 1406805541
+      white_splatter_spritesheet_75: -1457387771
+      white_splatter_spritesheet_76: 929890866
+      white_splatter_spritesheet_77: 1631142216
+      white_splatter_spritesheet_8: -1298955062
+      white_splatter_spritesheet_9: -2028175757
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

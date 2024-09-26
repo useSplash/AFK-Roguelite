@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab03e538a922b243ba9049adc106187, type: 3}
+  m_Name: Jeanne
+  m_EditorClassIdentifier: 
+  characterName: Jeanne
+  characterSprite: {fileID: 21300000, guid: d1a201d3cf9a73d40bc741c5b6fde32c, type: 3}
+  baseHealth: 20
+  baseAttackPower: 5
+  baseDefense: 5
+  basicAttackWindupDuration: 1
+  basicAttackRecoilDuration: 1
+  basicAttackType: 2
+  pfBasicAttack: {fileID: 8677054142740894407, guid: d61bf9e0860cc1142afa3580075d3f8f, type: 3}
+  triggerBasicAttackWindup: AttackWindup4
+  triggerBasicAttackRelease: AttackRelease4
+  triggerBasicAttackReel: AttackReel3
+  specialAbilityWindupDuration: 2
+  specialAbilityRecoilDuration: 2
+  specialAbilityCooldown: 10
+  specialAbilityType: 4
+  pfSpecialAbility: {fileID: 3849618910457934147, guid: 7a357d4903fd2ef4db3a54cbc86d4308, type: 3}
+  triggerSpecialAbilityWindup: AttackWindup4
+  triggerSpecialAbilityRelease: AttackRelease3
+  triggerSpecialAbilityReel: AttackReel3
