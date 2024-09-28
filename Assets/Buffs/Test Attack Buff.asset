@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Test Attack Buff
   m_EditorClassIdentifier: 
   statType: 0
-  amount: 0.25
+  amount: 0.5
   duration: 8

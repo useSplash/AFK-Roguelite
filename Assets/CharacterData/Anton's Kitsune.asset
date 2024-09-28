@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab03e538a922b243ba9049adc106187, type: 3}
+  m_Name: Anton's Kitsune
+  m_EditorClassIdentifier: 
+  characterName: Feral Kitsune
+  characterSprite: {fileID: 21300000, guid: 8be87f22bcadcd2468e75c6dded1e6a5, type: 3}
+  baseHealth: 100
+  baseAttackPower: 250
+  baseDefense: 50
+  baseCritChance: 10
+  baseCritDamage: 1.5
+  basicAttackWindupDuration: 1
+  basicAttackRecoilDuration: 1
+  basicAttackDamageMultiplier: 1
+  basicAttackType: 1
+  pfBasicAttack: {fileID: 4874407960502232464, guid: 6d2cdc65d5216104f8512eb8fc56ceb6, type: 3}
+  triggerBasicAttackWindup: AttackWindup4
+  triggerBasicAttackRelease: AttackRelease4
+  triggerBasicAttackReel: AttackReel3
+  specialAbilityWindupDuration: 3
+  specialAbilityRecoilDuration: 1
+  specialAbilityCooldown: 10
+  specialAbilityDamageMultiplier: 0.5
+  specialAbilityType: 2
+  pfSpecialAbility: {fileID: 8355716798773500483, guid: a71015f47c0805347b819db6acdd77fa, type: 3}
+  triggerSpecialAbilityWindup: AttackWindup4
+  triggerSpecialAbilityRelease: AttackRelease4
+  triggerSpecialAbilityReel: AttackReel3

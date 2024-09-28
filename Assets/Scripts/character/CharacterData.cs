@@ -10,8 +10,8 @@ public class CharacterData : ScriptableObject
         instant, // like a slash
         projectile, // like an arrow
         cast, // like a spell
-        selfBuff,
-        teamBuff,
+        selfBuff, // increasing own stats
+        teamBuff, // increasing team stats
     }
     public string characterName;
     public Sprite characterSprite;
@@ -20,10 +20,13 @@ public class CharacterData : ScriptableObject
     public int baseHealth;
     public int baseAttackPower;
     public int baseDefense;
+    public float baseCritChance;
+    public float baseCritDamage;
 
     [Header("Basic Attack")]
     public float basicAttackWindupDuration;
     public float basicAttackRecoilDuration;
+    public float basicAttackDamageMultiplier;
     public AttackType basicAttackType;
     public GameObject pfBasicAttack;
 
@@ -36,6 +39,7 @@ public class CharacterData : ScriptableObject
     public float specialAbilityWindupDuration;
     public float specialAbilityRecoilDuration;
     public float specialAbilityCooldown;
+    public float specialAbilityDamageMultiplier;
     public AttackType specialAbilityType;
     public GameObject pfSpecialAbility;
 

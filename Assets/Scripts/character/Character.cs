@@ -19,6 +19,9 @@ public class Character : MonoBehaviour
     private int currentHealth;
     private int currentAttackPower;
     private int currentDefense;
+    private float currentCritChance;
+    private float currentCritDamage;
+    private float currentSpeed; // All characters start at 1
     
     // Character basic attack variables
     private float currentBasicAttackWindupDuration;
@@ -54,6 +57,9 @@ public class Character : MonoBehaviour
         currentHealth = characterData.baseHealth;
         currentAttackPower = characterData.baseAttackPower;
         currentDefense = characterData.baseDefense;
+        currentCritChance = characterData.baseCritChance;
+        currentCritDamage = characterData.baseCritDamage;
+        currentSpeed = 1.0f; // Added stat
 
         currentBasicAttackWindupDuration = characterData.basicAttackWindupDuration;
         currentBasicAttackRecoilDuration = characterData.basicAttackRecoilDuration;
@@ -82,6 +88,7 @@ public class Character : MonoBehaviour
             }
         }
 
+        #region  Buff Particle System
         
         // Get the Emission module from the ParticleSystem
         var emission = buffParticleSystem.emission;
@@ -133,6 +140,7 @@ public class Character : MonoBehaviour
             }
             main.startColor = new ParticleSystem.MinMaxGradient(buffColor1, buffColor2);
         }
+        #endregion
 
         // Update special ability timer
         specialAbilityCooldownTimer -= Time.deltaTime;
@@ -168,69 +176,101 @@ public class Character : MonoBehaviour
     private IEnumerator BasicAttackWindup()
     {
         animator.SetTrigger(characterData.triggerBasicAttackWindup);
-        yield return new WaitForSeconds(currentBasicAttackWindupDuration);
-        StartCoroutine(BasicAttackRelease());
+        yield return new WaitForSeconds(currentBasicAttackWindupDuration / currentSpeed);
+        if (target != null)
+        {
+            StartCoroutine(BasicAttackRelease());
+        }
+        else
+        {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+        }
     }
 
     private IEnumerator BasicAttackRelease()
     {
+        GameObject pfAttack = characterData.pfBasicAttack;
+        if (pfAttack.GetComponent<Damage>() != null)
+        {
+            pfAttack.GetComponent<Damage>().Setup(currentAttackPower, 
+                                                characterData.basicAttackDamageMultiplier,
+                                                currentCritChance,
+                                                currentCritDamage);
+        }
         animator.SetTrigger(characterData.triggerBasicAttackRelease);
         float targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
         switch (characterData.basicAttackType){
             case CharacterData.AttackType.instant:
-                Destroy(Instantiate(characterData.pfBasicAttack, 
+                Destroy(Instantiate(pfAttack, 
                                     target.transform.position + new Vector3(0, targetOffsetY, 0), 
                                     Quaternion.identity), 
                                         1.0f);
                 break;
             case CharacterData.AttackType.projectile:
-                GameObject projectile = Instantiate(characterData.pfBasicAttack, 
-                                    transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                    Quaternion.identity);
+                GameObject projectile = Instantiate(pfAttack, 
+                                        transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
+                                        Quaternion.identity);
                 projectile.GetComponent<ProjectileHandler>().Setup(target.transform);
                 break;
             case CharacterData.AttackType.cast:
-                Instantiate(characterData.pfBasicAttack, 
-                                    target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                                    Quaternion.identity);
+                Instantiate(pfAttack, 
+                            target.transform.position + new Vector3(0, targetOffsetY, 0), 
+                            Quaternion.identity);
                 break;
             default:
                 break;
         }
-        yield return new WaitForSeconds(currentBasicAttackRecoilDuration);
+        yield return new WaitForSeconds(currentBasicAttackRecoilDuration / currentSpeed);
         animator.SetTrigger(characterData.triggerBasicAttackReel);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f / currentSpeed);
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
     }
 
     private IEnumerator SpecialAbilityWindup()
     {
         animator.SetTrigger(characterData.triggerSpecialAbilityWindup);
-        yield return new WaitForSeconds(currentSpecialAbilityWindupDuration);
-        StartCoroutine(SpecialAbilityRelease());
+        yield return new WaitForSeconds(currentSpecialAbilityWindupDuration / currentSpeed);
+        if (BattleManager.instance.GetClosestEnemy(transform.position) != null)
+        {
+            StartCoroutine(SpecialAbilityRelease());
+        }
+        else
+        {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+        }
     }
 
     private IEnumerator SpecialAbilityRelease()
     {
+        GameObject pfAbility = characterData.pfSpecialAbility;
+        if (pfAbility.GetComponent<Damage>() != null)
+        {
+            pfAbility.GetComponent<Damage>().Setup(currentAttackPower, 
+                                                characterData.specialAbilityDamageMultiplier,
+                                                currentCritChance,
+                                                currentCritDamage);
+        }
         animator.SetTrigger(characterData.triggerSpecialAbilityRelease);
         float targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
         switch (characterData.specialAbilityType){
             case CharacterData.AttackType.instant:
-                Destroy(Instantiate(characterData.pfSpecialAbility, 
+                Destroy(Instantiate(pfAbility, 
                                     target.transform.position + new Vector3(0, targetOffsetY, 0), 
                                     Quaternion.identity), 
                                         1.0f);
                 break;
             case CharacterData.AttackType.projectile:
-                GameObject projectile = Instantiate(characterData.pfSpecialAbility, 
-                                    transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                    Quaternion.identity);
+                GameObject projectile = Instantiate(pfAbility, 
+                                        transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
+                                        Quaternion.identity);
                 projectile.GetComponent<ProjectileHandler>().Setup(target.transform);
                 break;
             case CharacterData.AttackType.cast:
-                Instantiate(characterData.pfSpecialAbility, 
-                                    target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                                    Quaternion.identity);
+                Instantiate(pfAbility, 
+                            target.transform.position + new Vector3(0, targetOffsetY, 0), 
+                            Quaternion.identity);
                 break;
             case CharacterData.AttackType.selfBuff:
                 GameObject buff = Instantiate(characterData.pfSpecialAbility, 
@@ -244,9 +284,9 @@ public class Character : MonoBehaviour
                 Destroy(buff, 2.0f);
                 break;
             case CharacterData.AttackType.teamBuff:
-                buff = Instantiate(characterData.pfSpecialAbility, 
-                                    transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                    Quaternion.identity);
+                buff = Instantiate(pfAbility, 
+                                   transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
+                                   Quaternion.identity);
                 buffTargets = new List<Transform>();
                 foreach (GameObject character in BattleManager.instance.GetTeam())
                 {
@@ -263,9 +303,9 @@ public class Character : MonoBehaviour
             default:
                 break;
         }
-        yield return new WaitForSeconds(currentSpecialAbilityRecoilDuration);
+        yield return new WaitForSeconds(currentSpecialAbilityRecoilDuration / currentSpeed);
         animator.SetTrigger(characterData.triggerSpecialAbilityReel);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f / currentSpeed);
         specialAbilityCooldownTimer = currentSpecialAbilityCooldown;
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
     }
@@ -273,9 +313,11 @@ public class Character : MonoBehaviour
     // Apply a buff based on its target scope
     public void ApplyBuff(BuffData buffData)
     {
+        // For Healing
         if (buffData.statType == BuffData.StatType.Health)
         {
             currentHealth += (int)(characterData.baseHealth * buffData.amount);
+            currentHealth = Mathf.Min(characterData.baseHealth, currentHealth);
             StartCoroutine(ShowHealingEffect());
         }
         else {
@@ -300,14 +342,16 @@ public class Character : MonoBehaviour
                 currentAttackPower += (int)(characterData.baseAttackPower * amount);
                 break;
             case BuffData.StatType.Defense:
-                currentDefense += (int)amount;
+                currentDefense += (int)(characterData.baseDefense * amount);
                 break;
             case BuffData.StatType.Speed:
-                // Modify speed if implemented
+                currentSpeed += amount;
+                animator.speed = currentSpeed;
                 break;
         }
     }
 
+    // Method to show the VFX of healing
     private IEnumerator ShowHealingEffect()
     {
         healingAnimation.SetActive(true);

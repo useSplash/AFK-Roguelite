@@ -12,9 +12,14 @@ public class DamagePopup : MonoBehaviour
         textMesh = GetComponent<TextMeshPro>();
     }
 
-    public void Setup(int damageAmount)
+    public void Setup(int damageAmount, bool isCrit)
     {
         textMesh.SetText(damageAmount.ToString());
+        if (isCrit)
+        {
+            textMesh.color = Color.red;
+            textMesh.fontSize = 8;
+        }
         Destroy(gameObject, 0.7f);
     }
 

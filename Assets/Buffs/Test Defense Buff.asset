@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Test Defense Buff
   m_EditorClassIdentifier: 
   statType: 1
-  amount: 0.25
-  duration: 10
+  amount: 0.5
+  duration: 12

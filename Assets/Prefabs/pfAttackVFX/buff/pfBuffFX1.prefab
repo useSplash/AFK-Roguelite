@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffDataList:
-  - {fileID: 11400000, guid: 0f228016b407bf643a93a137d0f47065, type: 2}
+  - {fileID: 11400000, guid: f45900658addd26418e5140307c20d3c, type: 2}

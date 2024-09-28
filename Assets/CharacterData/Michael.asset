@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Michael
   characterSprite: {fileID: 21300000, guid: 64c368ae3c0b8c04293006e3ad7bfcfe, type: 3}
-  baseHealth: 200
-  baseAttackPower: 20
-  baseDefense: 30
+  baseHealth: 500
+  baseAttackPower: 200
+  baseDefense: 200
+  baseCritChance: 5
+  baseCritDamage: 1.5
   basicAttackWindupDuration: 1
   basicAttackRecoilDuration: 1.5
+  basicAttackDamageMultiplier: 1.2
   basicAttackType: 0
   pfBasicAttack: {fileID: 5160705620718297597, guid: 691afb6fda26a804caf11eed67808826, type: 3}
   triggerBasicAttackWindup: AttackWindup1
@@ -26,9 +29,10 @@ MonoBehaviour:
   triggerBasicAttackReel: AttackReel1
   specialAbilityWindupDuration: 3
   specialAbilityRecoilDuration: 2
-  specialAbilityCooldown: 10
-  specialAbilityType: 0
-  pfSpecialAbility: {fileID: 5160705620718297597, guid: 691afb6fda26a804caf11eed67808826, type: 3}
+  specialAbilityCooldown: 13
+  specialAbilityDamageMultiplier: 5
+  specialAbilityType: 2
+  pfSpecialAbility: {fileID: 3695251686326021513, guid: e15c4b1c4e3a04b42996b7d7e2728b0c, type: 3}
   triggerSpecialAbilityWindup: AttackWindup1
   triggerSpecialAbilityRelease: AttackRelease1
   triggerSpecialAbilityReel: AttackReel1

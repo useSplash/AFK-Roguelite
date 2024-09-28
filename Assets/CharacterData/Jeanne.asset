@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Jeanne
   characterSprite: {fileID: 21300000, guid: d1a201d3cf9a73d40bc741c5b6fde32c, type: 3}
-  baseHealth: 20
-  baseAttackPower: 5
-  baseDefense: 5
+  baseHealth: 200
+  baseAttackPower: 100
+  baseDefense: 100
+  baseCritChance: 5
+  baseCritDamage: 1.5
   basicAttackWindupDuration: 1
   basicAttackRecoilDuration: 1
+  basicAttackDamageMultiplier: 1
   basicAttackType: 2
   pfBasicAttack: {fileID: 8677054142740894407, guid: d61bf9e0860cc1142afa3580075d3f8f, type: 3}
   triggerBasicAttackWindup: AttackWindup4
@@ -26,7 +29,8 @@ MonoBehaviour:
   triggerBasicAttackReel: AttackReel3
   specialAbilityWindupDuration: 2
   specialAbilityRecoilDuration: 2
-  specialAbilityCooldown: 10
+  specialAbilityCooldown: 15
+  specialAbilityDamageMultiplier: 0
   specialAbilityType: 4
   pfSpecialAbility: {fileID: 3849618910457934147, guid: 7a357d4903fd2ef4db3a54cbc86d4308, type: 3}
   triggerSpecialAbilityWindup: AttackWindup4

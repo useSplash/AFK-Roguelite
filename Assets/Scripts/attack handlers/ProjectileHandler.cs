@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class ProjectileHandler : MonoBehaviour
@@ -37,29 +36,44 @@ public class ProjectileHandler : MonoBehaviour
     {
         if (isHoming)
         {
-            moveDir = (target.position 
-                    + new Vector3(0, targetOffsetY, 0)
-                    - transform.position).normalized;
-        }
-
-        // Destroy projectile on impact if enabled
-        if (destroyOnImpact)
-        {
-            float destroySelfDistance = 0.2f;
-            if (Vector3.Distance(target.position + new Vector3(0, targetOffsetY, 0) 
-                                ,transform.position) 
-                                    < destroySelfDistance)
+            if (target == null)
             {
-                if (destroyVFX != null){
-                    Destroy(Instantiate(destroyVFX, 
-                                        transform.position, 
-                                        Quaternion.identity), 0.5f);
+                moveDir = (target.position 
+                        + new Vector3(0, targetOffsetY, 0)
+                        - transform.position).normalized;
+                
+                float destroySelfDistance = 0.2f;
+                if (Vector3.Distance(target.position + new Vector3(0, targetOffsetY, 0) 
+                                    ,transform.position) 
+                                        < destroySelfDistance)
+                {
+                    Destroy(gameObject);
                 }
-                Destroy(gameObject);
+            }
+            else {
+                Destroy(gameObject, 5.0f);
+                isHoming = false;
             }
         }
 
         // Move projectile
         transform.position += moveDir * speed * Time.deltaTime;
     }
+    
+    private void OnTriggerEnter2D(Collider2D collider) 
+    {
+        if (collider.tag == "Enemy" && destroyOnImpact)
+        {
+            Destroy(gameObject, 0.1f);
+        }
+    }
+
+    private void OnDestroy(){
+        if (destroyVFX != null){
+            Destroy(Instantiate(destroyVFX, 
+                                transform.position, 
+                                Quaternion.identity), 0.5f);
+        }
+    }
+    
 }
