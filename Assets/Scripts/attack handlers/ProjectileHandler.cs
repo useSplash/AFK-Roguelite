@@ -18,7 +18,7 @@ public class ProjectileHandler : MonoBehaviour
         this.target = target;
         if (target.GetComponent<Collider2D>() != null)
         {
-            targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
+            targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3 + 0.3f;
         }
 
         moveDir = (target.position 
@@ -70,6 +70,15 @@ public class ProjectileHandler : MonoBehaviour
 
     private void OnDestroy(){
         if (destroyVFX != null){
+            Damage projectileDamage = GetComponent<Damage>();
+            Damage impactDamage = destroyVFX.GetComponent<Damage>();
+            if (projectileDamage != null && impactDamage != null)
+            {
+                impactDamage.Setup(projectileDamage.sourceAttackDamage, 
+                                   projectileDamage.sourceDamageMultiplier,
+                                   projectileDamage.sourceCriticalChance,
+                                   projectileDamage.sourceCriticalMultiplier);
+            }
             Destroy(Instantiate(destroyVFX, 
                                 transform.position, 
                                 Quaternion.identity), 0.5f);

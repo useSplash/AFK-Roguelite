@@ -5,12 +5,22 @@ using UnityEngine;
 public class BloodSplatRandomizer : MonoBehaviour
 {
     Animator animator;
-    void Awake(){
+    SpriteRenderer spriteRenderer;
+    void Awake()
+    {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void PlayRandomSplat(){
+    public void PlayRandomSplat()
+    {
         int randomInt = Random.Range(1,3);
         animator.Play("bloodsplat_vfx"+randomInt, 0, 0);
+    }
+
+    public void Reset()
+    {
+        animator.Play("Idle");
+        spriteRenderer.sprite = null;
     }
 }

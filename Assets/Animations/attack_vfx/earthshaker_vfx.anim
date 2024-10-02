@@ -133,17 +133,17 @@ AnimationClip:
       value: {fileID: 21300000, guid: eb1e3e9c28ccdff49a76a5c03536cc48, type: 3}
     - time: 0.55
       value: {fileID: 21300000, guid: 36027bd7303ed3e4990a5f7efed0fd31, type: 3}
-    - time: 0.5833333
+    - time: 0.6
       value: {fileID: 21300000, guid: 03f12907d93ae4044813281005a5c061, type: 3}
-    - time: 0.6333333
+    - time: 0.65
       value: {fileID: 21300000, guid: dbf22b017737115458f5462aa9a3bec6, type: 3}
-    - time: 0.68333334
+    - time: 0.7
       value: {fileID: 21300000, guid: 31a4ea2f8d697ca45a1d67375d7ded4d, type: 3}
-    - time: 0.73333335
+    - time: 0.75
       value: {fileID: 21300000, guid: a8d6a26c081328c43afa8e8433934149, type: 3}
-    - time: 0.76666665
+    - time: 0.8
       value: {fileID: 21300000, guid: bc00e24f2413011429e2566586f3cbb8, type: 3}
-    - time: 0.81666666
+    - time: 0.9
       value: {fileID: 0}
     attribute: m_Sprite
     path: Burst

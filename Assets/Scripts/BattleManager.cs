@@ -86,4 +86,36 @@ public class BattleManager : MonoBehaviour
 
         return closestEnemy;
     }
+
+    public GameObject GetClosestPlayerCharacter()
+{
+    GameObject[] playerCharacters = GetTeam();
+    if (playerCharacters == null || playerCharacters.Length == 0) return null;
+
+    GameObject closestPlayerCharacter = null;
+
+    foreach (GameObject playerCharacter in playerCharacters)
+    {
+        var characterState = playerCharacter.GetComponent<CharacterStateManager>().currentState;
+        
+        // Skip dead characters
+        if (characterState == CharacterStateManager.CharacterState.Dead)
+            continue;
+
+        // Initialize closestPlayerCharacter if null
+        if (closestPlayerCharacter == null)
+        {
+            closestPlayerCharacter = playerCharacter;
+            continue;
+        }
+
+        // Update closestPlayerCharacter if the current one is closer
+        if (playerCharacter.transform.position.x > closestPlayerCharacter.transform.position.x)
+        {
+            closestPlayerCharacter = playerCharacter;
+        }
+    }
+
+    return closestPlayerCharacter;
+}
 }

@@ -5,13 +5,14 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public CharacterData characterData;
+    public SpriteRenderer characterSpriteRenderer;
+    public Healthbar healthbar;
     public ParticleSystem buffParticleSystem;
     public GameObject healingAnimation;
 
     #region Components
     Animator animator;
     CharacterStateManager characterStateManager;
-    SpriteRenderer spriteRenderer;
     #endregion
 
     #region CharacterData
@@ -41,17 +42,17 @@ public class Character : MonoBehaviour
     private GameObject target;
     private float specialAbilityCooldownTimer;
 
-    private void Awake(){
+    private void Awake()
+    {
         animator = GetComponent<Animator>();
         characterStateManager = GetComponent<CharacterStateManager>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         healingAnimation.SetActive(false);
     }
 
     public void InitializeCharacter()
     {
-        spriteRenderer.sprite = characterData.characterSprite;
+        characterSpriteRenderer.sprite = characterData.characterSprite;
 
         // Initialize stats from CharacterData
         currentHealth = characterData.baseHealth;
@@ -67,14 +68,14 @@ public class Character : MonoBehaviour
         currentSpecialAbilityWindupDuration = characterData.specialAbilityWindupDuration;
         currentSpecialAbilityRecoilDuration = characterData.specialAbilityRecoilDuration;
         currentSpecialAbilityCooldown = characterData.specialAbilityCooldown;
-
-        // Set state to idle
+        
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+        healthbar.UpdateValues(currentHealth, characterData.baseHealth);
         specialAbilityCooldownTimer = currentSpecialAbilityCooldown;
     }
 
     void Update()
-    {
+    {   
         // Update the buff timers
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
@@ -150,8 +151,7 @@ public class Character : MonoBehaviour
         switch (characterStateManager.currentState)
         {
             case CharacterStateManager.CharacterState.Idle:
-                target = BattleManager.instance.GetClosestEnemy(transform.position);
-                if (target != null){
+                if (BattleManager.instance.GetEnemies().Length > 0){
                     if (specialAbilityCooldownTimer <= 0){
                         StartCoroutine(SpecialAbilityWindup());
                         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Attacking);
@@ -173,23 +173,26 @@ public class Character : MonoBehaviour
         }
     }
     
+    #region Basic Attack Animation
     private IEnumerator BasicAttackWindup()
     {
         animator.SetTrigger(characterData.triggerBasicAttackWindup);
         yield return new WaitForSeconds(currentBasicAttackWindupDuration / currentSpeed);
-        if (target != null)
-        {
-            StartCoroutine(BasicAttackRelease());
-        }
-        else
-        {
-            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
-            animator.SetTrigger("Idle");
-        }
+        StartCoroutine(BasicAttackRelease());
     }
 
     private IEnumerator BasicAttackRelease()
     {
+        // If there is a target
+        target = BattleManager.instance.GetClosestEnemy(transform.position);
+        if (target == null)
+        {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+            yield break;
+        }
+
+        // Perform Attack
         GameObject pfAttack = characterData.pfBasicAttack;
         if (pfAttack.GetComponent<Damage>() != null)
         {
@@ -200,6 +203,13 @@ public class Character : MonoBehaviour
         }
         animator.SetTrigger(characterData.triggerBasicAttackRelease);
         float targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
+        if (targetOffsetY == 0)
+        {
+            targetOffsetY = 1.5f;
+        }
+        else {
+            targetOffsetY += 0.5f;
+        }
         switch (characterData.basicAttackType){
             case CharacterData.AttackType.instant:
                 Destroy(Instantiate(pfAttack, 
@@ -226,24 +236,29 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(0.5f / currentSpeed);
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
     }
+    #endregion
 
+    #region Special Ability Animation
     private IEnumerator SpecialAbilityWindup()
     {
         animator.SetTrigger(characterData.triggerSpecialAbilityWindup);
         yield return new WaitForSeconds(currentSpecialAbilityWindupDuration / currentSpeed);
         if (BattleManager.instance.GetClosestEnemy(transform.position) != null)
-        {
-            StartCoroutine(SpecialAbilityRelease());
-        }
-        else
-        {
-            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
-            animator.SetTrigger("Idle");
-        }
+        StartCoroutine(SpecialAbilityRelease());
     }
 
     private IEnumerator SpecialAbilityRelease()
     {
+        // If there is a target
+        target = BattleManager.instance.GetClosestEnemy(transform.position);
+        if (target == null)
+        {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+            yield break;
+        }
+
+        // Perform Attack
         GameObject pfAbility = characterData.pfSpecialAbility;
         if (pfAbility.GetComponent<Damage>() != null)
         {
@@ -254,6 +269,14 @@ public class Character : MonoBehaviour
         }
         animator.SetTrigger(characterData.triggerSpecialAbilityRelease);
         float targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
+        if (targetOffsetY == 0)
+        {
+            targetOffsetY = 1.5f;
+        }
+        else 
+        {
+            targetOffsetY += 0.5f;
+        }
         switch (characterData.specialAbilityType){
             case CharacterData.AttackType.instant:
                 Destroy(Instantiate(pfAbility, 
@@ -290,11 +313,14 @@ public class Character : MonoBehaviour
                 buffTargets = new List<Transform>();
                 foreach (GameObject character in BattleManager.instance.GetTeam())
                 {
-                    buffTargets.Add(character.transform);
-                    if (character != this){
-                        Destroy(Instantiate(characterData.pfSpecialAbility, 
-                                character.transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                Quaternion.identity), 2.0f);
+                    if (character.GetComponent<CharacterStateManager>().currentState != CharacterStateManager.CharacterState.Dead)
+                    {
+                        buffTargets.Add(character.transform);
+                        if (character != this){
+                            Destroy(Instantiate(characterData.pfSpecialAbility, 
+                                    character.transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
+                                    Quaternion.identity), 2.0f);
+                        }
                     }
                 }
                 buff.GetComponent<BuffHandler>().CastBuff(buffTargets);
@@ -309,7 +335,9 @@ public class Character : MonoBehaviour
         specialAbilityCooldownTimer = currentSpecialAbilityCooldown;
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
     }
-
+    #endregion
+    
+    #region Buff Handlers
     // Apply a buff based on its target scope
     public void ApplyBuff(BuffData buffData)
     {
@@ -318,6 +346,7 @@ public class Character : MonoBehaviour
         {
             currentHealth += (int)(characterData.baseHealth * buffData.amount);
             currentHealth = Mathf.Min(characterData.baseHealth, currentHealth);
+            healthbar.UpdateValues(currentHealth, characterData.baseHealth);
             StartCoroutine(ShowHealingEffect());
         }
         else {
@@ -357,5 +386,40 @@ public class Character : MonoBehaviour
         healingAnimation.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         healingAnimation.SetActive(false);
+    }
+    #endregion
+
+    public void TakeDamage(int attackValue)
+    {
+        if (characterStateManager.currentState != CharacterStateManager.CharacterState.Dead)
+        {           
+            float calculatedDamage = DamageCalculator.CalculatePlayerDamage(attackValue, currentDefense);
+            currentHealth = Mathf.Max(currentHealth - (int)calculatedDamage, 0);
+            healthbar.UpdateValues(currentHealth, characterData.baseHealth);
+
+            if (currentHealth == 0)
+            {
+                Death();
+            }
+            else
+            {
+                StartCoroutine(RedFlash());
+            }
+        }
+    }
+
+    IEnumerator RedFlash()
+    {
+        characterSpriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.05f);
+        characterSpriteRenderer.color = Color.white;
+    }
+
+    public void Death()
+    {
+        StopAllCoroutines();
+        animator.SetTrigger("Death");
+        characterSpriteRenderer.color = Color.grey;
+        characterStateManager.ChangeState(CharacterStateManager.CharacterState.Dead);
     }
 }

@@ -25,4 +25,12 @@ public static class DamageCalculator
 
         return (finalDamage, isCrit); 
     }
+
+    public static int CalculatePlayerDamage(int enemyAttack, int playerDefense)
+    {
+        // Defense reduces damage by a percentage, capped to prevent zero damage
+        float defenseFactor = 1 - (playerDefense / (playerDefense + 100f)); // Defense gets weaker with higher values
+        int damage = Mathf.CeilToInt(enemyAttack * defenseFactor);
+        return Mathf.Max(damage, 1); // Ensure at least 1 damage
+    }
 }

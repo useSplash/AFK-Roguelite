@@ -15,7 +15,7 @@ MonoBehaviour:
   characterName: Croix
   characterSprite: {fileID: 21300000, guid: cddc98f2f04e2be48916a02c3f5bee4d, type: 3}
   baseHealth: 150
-  baseAttackPower: 150
+  baseAttackPower: 180
   baseDefense: 50
   baseCritChance: 25
   baseCritDamage: 1.5
