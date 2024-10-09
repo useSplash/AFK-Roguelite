@@ -36,3 +36,12 @@ MonoBehaviour:
   triggerSpecialAbilityWindup: AttackWindup2
   triggerSpecialAbilityRelease: AttackRelease3
   triggerSpecialAbilityReel: AttackReel1
+  burstAbilityName: EUREKA!!!
+  burstAbilityWindupDuration: 2
+  burstAbilityRecoilDuration: 3
+  burstAbilityType: 4
+  pfBurstAbility: {fileID: 0}
+  travelToCenter: 0
+  triggerBurstAbilityWindup: AttackWindup4
+  triggerBurstAbilityRelease: AttackRelease3
+  triggerBurstAbilityReel: AttackReel3

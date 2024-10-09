@@ -7,6 +7,7 @@ public class BattleManager : MonoBehaviour
     public static BattleManager instance { get; private set; }
     public GameObject characterPrefab; // Prefab with Character script attached
     public CharacterData[] teamList = new CharacterData[3];
+    public BurstButton[] burstButtons = new BurstButton[3];
     
     void Awake()
     {
@@ -41,12 +42,17 @@ public class BattleManager : MonoBehaviour
                         break;
                 }
 
-                SpawnCharacter(characterPosition, teamList[i]);
+                // Spawn Character and Assign Burst Buttons
+                burstButtons[i].InitializeBurstButton(SpawnCharacter(characterPosition, teamList[i]));
+            }
+            else
+            {
+                burstButtons[i].InitializeBurstButton(null);
             }
         }
     }
 
-    public void SpawnCharacter(Vector3 spawnPosition, CharacterData characterData)
+    public Character SpawnCharacter(Vector3 spawnPosition, CharacterData characterData)
     {
         GameObject newCharacter = Instantiate(characterPrefab, spawnPosition, Quaternion.identity);
 
@@ -56,6 +62,8 @@ public class BattleManager : MonoBehaviour
 
         // Initialize the character with the correct data
         character.InitializeCharacter();
+
+        return character;
     }
 
     public GameObject[] GetEnemies()

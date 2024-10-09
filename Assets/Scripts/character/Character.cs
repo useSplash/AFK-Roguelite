@@ -28,10 +28,14 @@ public class Character : MonoBehaviour
     private float currentBasicAttackWindupDuration;
     private float currentBasicAttackRecoilDuration;
 
-    // Character special attack variables
+    // Character special ability variables
     private float currentSpecialAbilityWindupDuration;
     private float currentSpecialAbilityRecoilDuration;
     private float currentSpecialAbilityCooldown;
+
+    // Character burst ability variables
+    private float currentBurstAbilityWindupDuration;
+    private float currentBurstAbilityRecoilDuration;
     #endregion
     
     #region Buff Information
@@ -68,6 +72,9 @@ public class Character : MonoBehaviour
         currentSpecialAbilityWindupDuration = characterData.specialAbilityWindupDuration;
         currentSpecialAbilityRecoilDuration = characterData.specialAbilityRecoilDuration;
         currentSpecialAbilityCooldown = characterData.specialAbilityCooldown;
+
+        currentBurstAbilityWindupDuration = characterData.burstAbilityWindupDuration;
+        currentBurstAbilityRecoilDuration = characterData.burstAbilityRecoilDuration;
         
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
         healthbar.UpdateValues(currentHealth, characterData.baseHealth);
@@ -178,6 +185,11 @@ public class Character : MonoBehaviour
     {
         animator.SetTrigger(characterData.triggerBasicAttackWindup);
         yield return new WaitForSeconds(currentBasicAttackWindupDuration / currentSpeed);
+        if (BattleManager.instance.GetClosestEnemy(transform.position) == null) {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+            yield break;
+        }
         StartCoroutine(BasicAttackRelease());
     }
 
@@ -192,7 +204,6 @@ public class Character : MonoBehaviour
             yield break;
         }
 
-        // Perform Attack
         GameObject pfAttack = characterData.pfBasicAttack;
         if (pfAttack.GetComponent<Damage>() != null)
         {
@@ -210,27 +221,10 @@ public class Character : MonoBehaviour
         else {
             targetOffsetY += 0.5f;
         }
-        switch (characterData.basicAttackType){
-            case CharacterData.AttackType.instant:
-                Destroy(Instantiate(pfAttack, 
-                                    target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                                    Quaternion.identity), 
-                                        1.0f);
-                break;
-            case CharacterData.AttackType.projectile:
-                GameObject projectile = Instantiate(pfAttack, 
-                                        transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                        Quaternion.identity);
-                projectile.GetComponent<ProjectileHandler>().Setup(target.transform);
-                break;
-            case CharacterData.AttackType.cast:
-                Instantiate(pfAttack, 
-                            target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                            Quaternion.identity);
-                break;
-            default:
-                break;
-        }
+
+        // Perform Attack
+        ExecuteAbility(characterData.basicAttackType, pfAttack, target, targetOffsetY);
+
         yield return new WaitForSeconds(currentBasicAttackRecoilDuration / currentSpeed);
         animator.SetTrigger(characterData.triggerBasicAttackReel);
         yield return new WaitForSeconds(0.5f / currentSpeed);
@@ -243,7 +237,11 @@ public class Character : MonoBehaviour
     {
         animator.SetTrigger(characterData.triggerSpecialAbilityWindup);
         yield return new WaitForSeconds(currentSpecialAbilityWindupDuration / currentSpeed);
-        if (BattleManager.instance.GetClosestEnemy(transform.position) != null)
+        if (BattleManager.instance.GetClosestEnemy(transform.position) == null) {
+            characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+            animator.SetTrigger("Idle");
+            yield break;
+        }
         StartCoroutine(SpecialAbilityRelease());
     }
 
@@ -277,66 +275,114 @@ public class Character : MonoBehaviour
         {
             targetOffsetY += 0.5f;
         }
-        switch (characterData.specialAbilityType){
-            case CharacterData.AttackType.instant:
-                Destroy(Instantiate(pfAbility, 
-                                    target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                                    Quaternion.identity), 
-                                        1.0f);
-                break;
-            case CharacterData.AttackType.projectile:
-                GameObject projectile = Instantiate(pfAbility, 
-                                        transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                        Quaternion.identity);
-                projectile.GetComponent<ProjectileHandler>().Setup(target.transform);
-                break;
-            case CharacterData.AttackType.cast:
-                Instantiate(pfAbility, 
-                            target.transform.position + new Vector3(0, targetOffsetY, 0), 
-                            Quaternion.identity);
-                break;
-            case CharacterData.AttackType.selfBuff:
-                GameObject buff = Instantiate(characterData.pfSpecialAbility, 
-                                    transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                    Quaternion.identity);
-                List<Transform> buffTargets = new List<Transform>
-                {
-                    transform
-                };
-                buff.GetComponent<BuffHandler>().CastBuff(buffTargets);
-                Destroy(buff, 2.0f);
-                break;
-            case CharacterData.AttackType.teamBuff:
-                buff = Instantiate(pfAbility, 
-                                   transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                   Quaternion.identity);
-                buffTargets = new List<Transform>();
-                foreach (GameObject character in BattleManager.instance.GetTeam())
-                {
-                    if (character.GetComponent<CharacterStateManager>().currentState != CharacterStateManager.CharacterState.Dead)
-                    {
-                        buffTargets.Add(character.transform);
-                        if (character != this){
-                            Destroy(Instantiate(characterData.pfSpecialAbility, 
-                                    character.transform.position + new Vector3(0, 1f, 0), // Position starts at the base 
-                                    Quaternion.identity), 2.0f);
-                        }
-                    }
-                }
-                buff.GetComponent<BuffHandler>().CastBuff(buffTargets);
-                Destroy(buff, 2.0f);
-                break;
-            default:
-                break;
-        }
+
+        // Execute Special Ability
+        ExecuteAbility(characterData.specialAbilityType, pfAbility, target, targetOffsetY);
+
+        // Reel After Ability
+        specialAbilityCooldownTimer = currentSpecialAbilityCooldown;
         yield return new WaitForSeconds(currentSpecialAbilityRecoilDuration / currentSpeed);
         animator.SetTrigger(characterData.triggerSpecialAbilityReel);
         yield return new WaitForSeconds(0.5f / currentSpeed);
-        specialAbilityCooldownTimer = currentSpecialAbilityCooldown;
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
     }
     #endregion
     
+    #region Burst Ability Animation
+    public void ActivateBurst()
+    {
+        StopAllCoroutines();
+        characterStateManager.ChangeState(CharacterStateManager.CharacterState.Attacking);
+        BurstAnimationHandler.instance.PlayBurstAnimation(characterData.burstAbilityName, 
+                                                          characterData.characterSprite, 
+                                                          () => {
+            Debug.Log("DO THE THING"); 
+            StartCoroutine(BurstAbilityRelease());
+        });
+    }
+    private IEnumerator BurstAbilityRelease()
+    {
+        // Perform Attack
+        GameObject pfAbility = characterData.pfBurstAbility;
+        if (pfAbility.GetComponent<Damage>() != null)
+        {
+            pfAbility.GetComponent<Damage>().Setup(currentAttackPower, 
+                                                characterData.burstAbilityDamageMultiplier,
+                                                currentCritChance,
+                                                currentCritDamage);
+        }
+        float targetOffsetY = target.GetComponent<Collider2D>().bounds.size.y/3;
+        if (targetOffsetY == 0)
+        {
+            targetOffsetY = 1.5f;
+        }
+        else 
+        {
+            targetOffsetY += 0.5f;
+        }
+
+        Vector3 originalPosition = transform.position;
+
+        if (characterData.travelToCenter)
+        {
+            Vector3 targetPosition = new Vector3(0, -2);
+            float reachedDistance = 0.5f;
+            float speed = 20.0f;
+
+            animator.SetTrigger("Dash");
+
+            while (Vector3.Distance(transform.position, targetPosition) > reachedDistance) 
+            {
+                Vector3 direction = (targetPosition - transform.position).normalized;
+                transform.position += direction * speed * Time.deltaTime;
+
+                if (Vector3.Distance(transform.position, targetPosition) < reachedDistance)
+                {
+                    transform.position = targetPosition;  // Snap to the exact position
+                }
+                yield return null;  // Wait for the next frame
+            }
+        }
+        
+        // Windup Burst
+        animator.SetTrigger(characterData.triggerBurstAbilityWindup);
+        yield return new WaitForSeconds(currentBurstAbilityWindupDuration / currentSpeed);
+
+        // Execute Burst
+        animator.SetTrigger(characterData.triggerBurstAbilityRelease);
+        ExecuteAbility(characterData.burstAbilityType, pfAbility, target, targetOffsetY);
+
+        // Reel
+        yield return new WaitForSeconds(currentBurstAbilityRecoilDuration / currentSpeed);
+        animator.SetTrigger(characterData.triggerBurstAbilityReel);
+        yield return new WaitForSeconds(0.5f / currentSpeed);
+
+        // Dash back
+        if (characterData.travelToCenter)
+        {
+            Vector3 targetPosition = originalPosition;
+            float reachedDistance = 0.5f;
+            float speed = 20.0f;
+            animator.SetTrigger("DashBack");
+
+            while (Vector3.Distance(transform.position, targetPosition) > reachedDistance) 
+            {
+                Vector3 direction = (targetPosition - transform.position).normalized;
+                transform.position += direction * speed * Time.deltaTime;
+
+                if (Vector3.Distance(transform.position, targetPosition) < reachedDistance)
+                {
+                    transform.position = targetPosition;  // Snap to the exact position
+                }
+                yield return null;  // Wait for the next frame
+            }
+        }
+
+        characterStateManager.ChangeState(CharacterStateManager.CharacterState.Idle);
+        animator.SetTrigger("Idle");
+    }
+    #endregion
+
     #region Buff Handlers
     // Apply a buff based on its target scope
     public void ApplyBuff(BuffData buffData)
@@ -389,9 +435,90 @@ public class Character : MonoBehaviour
     }
     #endregion
 
+    #region Ability Funections
+    public void ExecuteAbility(CharacterData.AttackType attackType, GameObject pfAbility, GameObject target, float targetOffsetY)
+    {
+        switch (attackType)
+        {
+            case CharacterData.AttackType.instant:
+            // For instant attacks, destroy the object after instantiation
+            SpawnAtTarget(pfAbility, target.transform.position + new Vector3(0, targetOffsetY, 0), true);
+            break;
+            
+        case CharacterData.AttackType.cast:
+            // For cast attacks, let the object handle its own destruction
+            SpawnAtTarget(pfAbility, target.transform.position + new Vector3(0, targetOffsetY, 0), false);
+            break;
+                
+            case CharacterData.AttackType.projectile:
+                SpawnProjectile(pfAbility, target);
+                break;
+                
+            case CharacterData.AttackType.selfBuff:
+                ApplyBuff(pfAbility, new List<Transform> { transform });
+                break;
+                
+            case CharacterData.AttackType.teamBuff:
+                ApplyTeamBuff(pfAbility);
+                break;
+
+            case CharacterData.AttackType.center:
+                SpawnAtTarget(pfAbility, new Vector3(0, 0), false);
+                break;
+                
+            default:
+                Debug.LogWarning("Unknown attack type");
+                break;
+        }
+    }
+
+    private void SpawnAtTarget(GameObject prefab, Vector3 position, bool destroyExternally)
+    {
+        GameObject spawnedObject = Instantiate(prefab, position, Quaternion.identity);
+    
+        if (destroyExternally)
+        {
+            Destroy(spawnedObject, 1.0f);  // Destroy after 1 second
+        }
+    }
+
+    private void SpawnProjectile(GameObject projectilePrefab, GameObject target)
+    {
+        GameObject projectile = Instantiate(projectilePrefab, transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
+        projectile.GetComponent<ProjectileHandler>().Setup(target.transform);
+    }
+
+    private void ApplyBuff(GameObject buffPrefab, List<Transform> targets)
+    {
+        GameObject buff = Instantiate(buffPrefab, transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
+        buff.GetComponent<BuffHandler>().CastBuff(targets);
+        Destroy(buff, 2.0f);
+    }
+
+    private void ApplyTeamBuff(GameObject buffPrefab)
+    {
+        GameObject buff = Instantiate(buffPrefab, transform.position + new Vector3(0, 1f, 0), Quaternion.identity);
+        List<Transform> teamTargets = new List<Transform>();
+
+        foreach (GameObject character in BattleManager.instance.GetTeam())
+        {
+            if (character.GetComponent<CharacterStateManager>().currentState != CharacterStateManager.CharacterState.Dead)
+            {
+                teamTargets.Add(character.transform);
+                if (character != this)
+                {
+                    SpawnAtTarget(buffPrefab, character.transform.position + new Vector3(0, 1f, 0), true);
+                }
+            }
+        }
+
+        buff.GetComponent<BuffHandler>().CastBuff(teamTargets);
+        Destroy(buff, 2.0f);
+    }
+
     public void TakeDamage(int attackValue)
     {
-        if (characterStateManager.currentState != CharacterStateManager.CharacterState.Dead)
+        if (!IsDead())
         {           
             float calculatedDamage = DamageCalculator.CalculatePlayerDamage(attackValue, currentDefense);
             currentHealth = Mathf.Max(currentHealth - (int)calculatedDamage, 0);
@@ -407,12 +534,18 @@ public class Character : MonoBehaviour
             }
         }
     }
+    #endregion
 
     IEnumerator RedFlash()
     {
         characterSpriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.05f);
         characterSpriteRenderer.color = Color.white;
+    }
+
+    public bool IsDead()
+    {
+        return characterStateManager.currentState == CharacterStateManager.CharacterState.Dead;
     }
 
     public void Death()

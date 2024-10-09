@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -37,6 +36,9 @@ public class Enemy : MonoBehaviour
 
     private GameObject target;
     public bool isInvincible;
+
+    public delegate void EnemyDeath(Enemy enemy);
+    public event EnemyDeath OnDeath;
 
     private void Awake()
     {
@@ -186,6 +188,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage((float damageAmount, bool isCrit) damageInfo)
     {
+        if (!gameObject.activeInHierarchy) {return;}
         DamagePopup damagePopup = Instantiate(damageText, 
                                               transform.position + new Vector3(0, 1), 
                                               Quaternion.identity)
@@ -212,6 +215,7 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
+        OnDeath.Invoke(this);
         StopAllCoroutines();
 
         spriteRenderer.color = Color.white;
@@ -220,9 +224,27 @@ public class Enemy : MonoBehaviour
 
         bloodSplatFX.Reset();
 
+        int randomInt = Random.Range(3, 4);
+        float spawnRadius = 1.0f; // Define a radius around the enemy position
+
+        for (int i = 0; i < randomInt; i++)
+        {
+            // Generate a random position within the spawn radius
+            Vector2 randomOffset = Random.insideUnitCircle * spawnRadius; // Random point in a circle
+            Vector3 spawnPosition = transform.position + new Vector3(randomOffset.x, randomOffset.y, 0); // Add offset to enemy position
+
+            // When an enemy dies, spawn a coin
+            GameObject coin = CoinPooler.instance.GetPooledCoin();
+            if (coin != null)
+            {
+                // Activate and set up the coin to move to the currency icon
+                coin.GetComponent<Coin>().ActivateCoin(spawnPosition, 10/randomInt + 1, (i + 1) * 0.05f);
+            }
+        }
         Destroy(Instantiate(deathPoof,
                             transform.position + new Vector3(0, 1), 
                             Quaternion.identity), 1.0f);
+
 
         EnemyPooler.instance.ReturnEnemyToPool(gameObject);
     }

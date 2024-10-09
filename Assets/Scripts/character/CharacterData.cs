@@ -12,6 +12,7 @@ public class CharacterData : ScriptableObject
         cast, // like a spell
         selfBuff, // increasing own stats
         teamBuff, // increasing team stats
+        center, // screen wide fixed position
     }
     public string characterName;
     public Sprite characterSprite;
@@ -47,4 +48,18 @@ public class CharacterData : ScriptableObject
     public string triggerSpecialAbilityWindup;
     public string triggerSpecialAbilityRelease;
     public string triggerSpecialAbilityReel;
+
+    [Header("Burst Ability")]
+    public string burstAbilityName;
+    public float burstAbilityWindupDuration;
+    public float burstAbilityRecoilDuration;
+    public float burstAbilityDamageMultiplier;
+    public AttackType burstAbilityType;
+    public GameObject pfBurstAbility;
+    public bool travelToCenter;
+
+    [Header("Burst Ability Animation Trigger")]
+    public string triggerBurstAbilityWindup;
+    public string triggerBurstAbilityRelease;
+    public string triggerBurstAbilityReel;
 }

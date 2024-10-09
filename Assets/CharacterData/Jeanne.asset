@@ -36,3 +36,12 @@ MonoBehaviour:
   triggerSpecialAbilityWindup: AttackWindup4
   triggerSpecialAbilityRelease: AttackRelease3
   triggerSpecialAbilityReel: AttackReel3
+  burstAbilityName: Divine Favor
+  burstAbilityWindupDuration: 2
+  burstAbilityRecoilDuration: 2
+  burstAbilityType: 4
+  pfBurstAbility: {fileID: 0}
+  travelToCenter: 0
+  triggerBurstAbilityWindup: AttackWindup4
+  triggerBurstAbilityRelease: AttackRelease3
+  triggerBurstAbilityReel: AttackReel3

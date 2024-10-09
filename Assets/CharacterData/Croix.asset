@@ -36,3 +36,13 @@ MonoBehaviour:
   triggerSpecialAbilityWindup: AttackWindup1
   triggerSpecialAbilityRelease: AttackRelease3
   triggerSpecialAbilityReel: AttackReel2
+  burstAbilityName: Death By 1000 Cuts
+  burstAbilityWindupDuration: 1
+  burstAbilityRecoilDuration: 2
+  burstAbilityDamageMultiplier: 10
+  burstAbilityType: 5
+  pfBurstAbility: {fileID: 468099484931210953, guid: 40527aa9257928144841cb2a0e86fb8e, type: 3}
+  travelToCenter: 1
+  triggerBurstAbilityWindup: AttackWindup3
+  triggerBurstAbilityRelease: AttackRelease1
+  triggerBurstAbilityReel: AttackReel1
