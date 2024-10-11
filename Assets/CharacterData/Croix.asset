@@ -37,9 +37,9 @@ MonoBehaviour:
   triggerSpecialAbilityRelease: AttackRelease3
   triggerSpecialAbilityReel: AttackReel2
   burstAbilityName: Death By 1000 Cuts
-  burstAbilityWindupDuration: 1
-  burstAbilityRecoilDuration: 2
-  burstAbilityDamageMultiplier: 10
+  burstAbilityWindupDuration: 0.2
+  burstAbilityRecoilDuration: 5
+  burstAbilityDamageMultiplier: 20
   burstAbilityType: 5
   pfBurstAbility: {fileID: 468099484931210953, guid: 40527aa9257928144841cb2a0e86fb8e, type: 3}
   travelToCenter: 1

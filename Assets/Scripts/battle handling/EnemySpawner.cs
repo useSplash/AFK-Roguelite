@@ -11,17 +11,15 @@ public class EnemySpawner : MonoBehaviour
     private float waveTimer = 0f;
     private bool waveInProgress = false;
 
-    private int activeEnemies = 0; // Track the number of active enemies
-    private int totalEnemiesSpawned = 0; // Track total number of enemies spawned
-
+    private bool allEnemiesSpawned = false; // Track if all enemies have been spawned
 
     private void Update()
     {
         // If a wave is in progress, check for additional conditions
         if (waveInProgress)
         {
-            // If there are no more active enemies, the wave is complete
-            if (activeEnemies <= 0)
+            // If all enemies are spawned and there are no more active enemies, the wave is complete
+            if (allEnemiesSpawned && BattleManager.instance.GetEnemies().Length == 0)
             {
                 waveInProgress = false;
                 currentWaveIndex++;
@@ -46,7 +44,7 @@ public class EnemySpawner : MonoBehaviour
     void StartWave(Wave wave)
     {
         waveInProgress = true;
-        activeEnemies = 0; // Reset active enemies for the new wave
+        allEnemiesSpawned = false;  // Reset spawn flag
         Debug.Log("Start Wave " + (currentWaveIndex + 1).ToString());
         StartCoroutine(SpawnEnemiesInWave(wave));
     }
@@ -58,12 +56,12 @@ public class EnemySpawner : MonoBehaviour
             for (int i = 0; i < instruction.amount; i++)
             {
                 SpawnEnemy(instruction.enemyData);
-                activeEnemies++; // Increment the active enemy count
-                totalEnemiesSpawned++; // Increment the total enemies spawned count
-                Debug.Log("Total Enemy Spawned: " + totalEnemiesSpawned);
                 yield return new WaitForSeconds(instruction.interval); // Delay between spawns
             }
         }
+        
+        // All enemies have been spawned
+        allEnemiesSpawned = true;
     }
 
     private void SpawnEnemy(EnemyData enemyData)
@@ -80,23 +78,11 @@ public class EnemySpawner : MonoBehaviour
         enemyScript.enemyData = enemyData;
         enemyScript.InitializeEnemy();
 
-        // Subscribe to the enemy's death event to decrement activeEnemies count
-        enemyScript.OnDeath += HandleEnemyDeath;
-
         // Get a random spawn point
         float randomFloatY = Random.Range(-1.0f, 1.0f);
         Vector3 spawnPoint = new Vector3(10f, randomFloatY - 2.5f);
 
         // Place the enemy at the spawn point
         enemy.transform.position = spawnPoint;
-    }
-
-    private void HandleEnemyDeath(Enemy enemy)
-    {
-        activeEnemies--; // Decrement the count when an enemy dies
-        Debug.Log("Enemy defeated. Active enemies left: " + activeEnemies);
-
-        // Unsubscribe from the death event to prevent multiple triggers
-        enemy.OnDeath -= HandleEnemyDeath;
     }
 }

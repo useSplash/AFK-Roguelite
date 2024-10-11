@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     public Healthbar healthbar;
     public ParticleSystem buffParticleSystem;
     public GameObject healingAnimation;
+    public BurstButton burstButton;
 
     #region Components
     Animator animator;
@@ -45,6 +46,8 @@ public class Character : MonoBehaviour
 
     private GameObject target;
     private float specialAbilityCooldownTimer;
+    private float currentEnergy = 0;
+    private float currentMaxEnergy = 100;
 
     private void Awake()
     {
@@ -171,6 +174,8 @@ public class Character : MonoBehaviour
                 break;
             case CharacterStateManager.CharacterState.Attacking:
                 break;
+            case CharacterStateManager.CharacterState.Burst:
+                break;
             case CharacterStateManager.CharacterState.Stunned:
                 break;
             case CharacterStateManager.CharacterState.Dead:
@@ -224,6 +229,7 @@ public class Character : MonoBehaviour
 
         // Perform Attack
         ExecuteAbility(characterData.basicAttackType, pfAttack, target, targetOffsetY);
+        GainEnergy(10);
 
         yield return new WaitForSeconds(currentBasicAttackRecoilDuration / currentSpeed);
         animator.SetTrigger(characterData.triggerBasicAttackReel);
@@ -291,8 +297,10 @@ public class Character : MonoBehaviour
     #region Burst Ability Animation
     public void ActivateBurst()
     {
+        if (currentEnergy < currentMaxEnergy) return;
         StopAllCoroutines();
-        characterStateManager.ChangeState(CharacterStateManager.CharacterState.Attacking);
+        GainEnergy(-currentEnergy);
+        characterStateManager.ChangeState(CharacterStateManager.CharacterState.Burst);
         BurstAnimationHandler.instance.PlayBurstAnimation(characterData.burstAbilityName, 
                                                           characterData.characterSprite, 
                                                           () => {
@@ -325,11 +333,11 @@ public class Character : MonoBehaviour
 
         if (characterData.travelToCenter)
         {
-            Vector3 targetPosition = new Vector3(0, -2);
+            Vector3 targetPosition = new Vector3(0, -2.5f);
             float reachedDistance = 0.5f;
-            float speed = 20.0f;
+            float speed = 30.0f;
 
-            animator.SetTrigger("Dash");
+            animator.Play("character_dash");
 
             while (Vector3.Distance(transform.position, targetPosition) > reachedDistance) 
             {
@@ -346,24 +354,24 @@ public class Character : MonoBehaviour
         
         // Windup Burst
         animator.SetTrigger(characterData.triggerBurstAbilityWindup);
-        yield return new WaitForSeconds(currentBurstAbilityWindupDuration / currentSpeed);
+        yield return new WaitForSeconds(currentBurstAbilityWindupDuration);
 
         // Execute Burst
         animator.SetTrigger(characterData.triggerBurstAbilityRelease);
         ExecuteAbility(characterData.burstAbilityType, pfAbility, target, targetOffsetY);
 
         // Reel
-        yield return new WaitForSeconds(currentBurstAbilityRecoilDuration / currentSpeed);
+        yield return new WaitForSeconds(currentBurstAbilityRecoilDuration);
         animator.SetTrigger(characterData.triggerBurstAbilityReel);
-        yield return new WaitForSeconds(0.5f / currentSpeed);
+        yield return new WaitForSeconds(0.5f);
 
         // Dash back
         if (characterData.travelToCenter)
         {
             Vector3 targetPosition = originalPosition;
             float reachedDistance = 0.5f;
-            float speed = 20.0f;
-            animator.SetTrigger("DashBack");
+            float speed = 30.0f;
+            animator.Play("character_dash_back");
 
             while (Vector3.Distance(transform.position, targetPosition) > reachedDistance) 
             {
@@ -435,7 +443,7 @@ public class Character : MonoBehaviour
     }
     #endregion
 
-    #region Ability Funections
+    #region Ability Functions
     public void ExecuteAbility(CharacterData.AttackType attackType, GameObject pfAbility, GameObject target, float targetOffsetY)
     {
         switch (attackType)
@@ -515,10 +523,10 @@ public class Character : MonoBehaviour
         buff.GetComponent<BuffHandler>().CastBuff(teamTargets);
         Destroy(buff, 2.0f);
     }
-
+    #endregion
     public void TakeDamage(int attackValue)
     {
-        if (!IsDead())
+        if (!IsDead() && !InBurst())
         {           
             float calculatedDamage = DamageCalculator.CalculatePlayerDamage(attackValue, currentDefense);
             currentHealth = Mathf.Max(currentHealth - (int)calculatedDamage, 0);
@@ -534,7 +542,12 @@ public class Character : MonoBehaviour
             }
         }
     }
-    #endregion
+    
+    public void GainEnergy(float amount)
+    {
+        currentEnergy = Mathf.Min(currentEnergy + amount, currentMaxEnergy);
+        burstButton.UpdateSlider(currentEnergy / currentMaxEnergy);
+    }
 
     IEnumerator RedFlash()
     {
@@ -546,6 +559,11 @@ public class Character : MonoBehaviour
     public bool IsDead()
     {
         return characterStateManager.currentState == CharacterStateManager.CharacterState.Dead;
+    }
+
+    public bool InBurst()
+    {
+        return characterStateManager.currentState == CharacterStateManager.CharacterState.Burst;
     }
 
     public void Death()

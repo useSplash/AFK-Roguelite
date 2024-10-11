@@ -8,4 +8,14 @@ public class AreaAttackHandler : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void TimeStop()
+    {
+        TimeStopHandler.instance.StopTimeForImpact(0.1f);
+    }
+
+    public void ShakeScreen()
+    {
+        CameraShake.instance.HeavyImpactShake();
+    }
 }

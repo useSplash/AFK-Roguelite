@@ -8,6 +8,7 @@ public class CharacterStateManager : MonoBehaviour
     {
         Idle,
         Attacking,
+        Burst,
         Stunned,
         Dead
     }

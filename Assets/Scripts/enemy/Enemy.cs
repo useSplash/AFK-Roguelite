@@ -37,9 +37,6 @@ public class Enemy : MonoBehaviour
     private GameObject target;
     public bool isInvincible;
 
-    public delegate void EnemyDeath(Enemy enemy);
-    public event EnemyDeath OnDeath;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -215,7 +212,6 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-        OnDeath.Invoke(this);
         StopAllCoroutines();
 
         spriteRenderer.color = Color.white;

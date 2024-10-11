@@ -32,11 +32,13 @@ public class BurstAnimationHandler : MonoBehaviour
         burstText.text = attackName;
         burstTextShadow.text = attackName;
         animator.Play("burst_animation", 0, 0);
+        TimeStopHandler.instance.StopTimeForImpact();
     } 
 
     public void OnBurstComplete()
     {
         onBurstAnimationEnd?.Invoke();
         animator.Play("burst_idle");
+        TimeStopHandler.instance.ResumeTime();
     }
 }
