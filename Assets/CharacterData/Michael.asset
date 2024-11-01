@@ -37,11 +37,12 @@ MonoBehaviour:
   triggerSpecialAbilityRelease: AttackRelease1
   triggerSpecialAbilityReel: AttackReel1
   burstAbilityName: Heaven's Judgement
-  burstAbilityWindupDuration: 4
+  burstAbilityWindupDuration: 1
   burstAbilityRecoilDuration: 3
+  burstAbilityDamageMultiplier: 5
   burstAbilityType: 5
-  pfBurstAbility: {fileID: 0}
+  pfBurstAbility: {fileID: 5792152970605126723, guid: 08c0a77ce9a0d3940937205a2c9c1bc9, type: 3}
   travelToCenter: 1
-  triggerBurstAbilityWindup: AttackWindup1
-  triggerBurstAbilityRelease: AttackRelease1
+  triggerBurstAbilityWindup: AttackWindup2
+  triggerBurstAbilityRelease: AttackRelease2
   triggerBurstAbilityReel: AttackReel1

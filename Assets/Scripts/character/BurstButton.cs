@@ -85,6 +85,8 @@ public class BurstButton : MonoBehaviour
 
     public void ActivateBurst()
     {
+        // Band aid Solution
+        if (energySlider.value == 0) return;
         if (!character.IsDead() && character != null)
         {
             character?.ActivateBurst();

@@ -154,20 +154,20 @@ public class Enemy : MonoBehaviour
     {
         animator.SetTrigger(enemyData.triggerAttackWindup);
         yield return new WaitForSeconds(currentAttackWindupDuration);
-        StartCoroutine(AttackRelease());
-    }
-
-    private IEnumerator AttackRelease()
-    {
-        // If there is a target
+        // If there is a target or target is too far
         target = BattleManager.instance.GetClosestPlayerCharacter();
-        if (target == null)
+        if (target == null || Vector3.Distance(transform.position, target.transform.position) > currentAttackRange)
         {
             enemyStateManager.ChangeState(EnemyStateManager.EnemyState.Idle);
             animator.SetTrigger("Idle");
             attackCooldownTimer = currentAttackCooldown;
             yield break;
         }
+        StartCoroutine(AttackRelease());
+    }
+
+    private IEnumerator AttackRelease()
+    {
         animator.SetTrigger(enemyData.triggerAttackRelease);
         switch (enemyData.attackType){
             case EnemyData.AttackType.instant:
@@ -241,7 +241,13 @@ public class Enemy : MonoBehaviour
                             transform.position + new Vector3(0, 1), 
                             Quaternion.identity), 1.0f);
 
-
+        if (BattleManager.instance.GetEnemies().Length == 1)
+        {
+            foreach (GameObject characterObject in BattleManager.instance.GetTeam())
+            {
+                characterObject.GetComponent<Character>().EndWave();
+            }
+        }
         EnemyPooler.instance.ReturnEnemyToPool(gameObject);
     }
 }

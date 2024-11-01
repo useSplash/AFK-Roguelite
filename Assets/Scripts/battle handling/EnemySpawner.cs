@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,6 +46,10 @@ public class EnemySpawner : MonoBehaviour
     {
         waveInProgress = true;
         allEnemiesSpawned = false;  // Reset spawn flag
+        foreach (GameObject characterObject in BattleManager.instance.GetTeam())
+        {
+            characterObject.GetComponent<Character>().StartWave();
+        }
         Debug.Log("Start Wave " + (currentWaveIndex + 1).ToString());
         StartCoroutine(SpawnEnemiesInWave(wave));
     }
@@ -79,7 +84,7 @@ public class EnemySpawner : MonoBehaviour
         enemyScript.InitializeEnemy();
 
         // Get a random spawn point
-        float randomFloatY = Random.Range(-1.0f, 1.0f);
+        float randomFloatY = UnityEngine.Random.Range(-1.0f, 1.0f);
         Vector3 spawnPoint = new Vector3(10f, randomFloatY - 2.5f);
 
         // Place the enemy at the spawn point

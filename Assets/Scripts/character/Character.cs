@@ -48,6 +48,7 @@ public class Character : MonoBehaviour
     private float specialAbilityCooldownTimer;
     private float currentEnergy = 0;
     private float currentMaxEnergy = 100;
+    private bool waveInProgress = false;
 
     private void Awake()
     {
@@ -90,7 +91,7 @@ public class Character : MonoBehaviour
         for (int i = activeBuffs.Count - 1; i >= 0; i--)
         {
             BuffData buff = activeBuffs[i];
-            buffTimers[buff] -= Time.deltaTime;
+            if (waveInProgress) buffTimers[buff] -= Time.deltaTime;
 
             if (buffTimers[buff] <= 0)
             {
@@ -130,31 +131,33 @@ public class Character : MonoBehaviour
                     buffColor1 = Color.yellow;
                     break;
             }
+            buffColor2 = buffColor1;
             if (activeBuffs.Count >= 2){
-                // Case when 2 or more buffs are active
-                emission.rateOverTime = new ParticleSystem.MinMaxCurve(50);
-                switch (activeBuffs[1].statType){
-                    case BuffData.StatType.Attack:
-                        buffColor2 = Color.red;
-                        break;
-                    case BuffData.StatType.Defense:
-                        buffColor2 = Color.blue;
-                        break;
-                    case BuffData.StatType.Speed:
-                        buffColor2 = Color.yellow;
-                        break;
+                int counter = 1;
+                while (buffColor1 == buffColor2 && counter < activeBuffs.Count)
+                {
+                    // Case when 2 or more buffs are active
+                    emission.rateOverTime = new ParticleSystem.MinMaxCurve(50);
+                    switch (activeBuffs[counter].statType){
+                        case BuffData.StatType.Attack:
+                            buffColor2 = Color.red;
+                            break;
+                        case BuffData.StatType.Defense:
+                            buffColor2 = Color.blue;
+                            break;
+                        case BuffData.StatType.Speed:
+                            buffColor2 = Color.yellow;
+                            break;
+                    }
+                    counter += 1;
                 }
-            }
-            else 
-            {
-                buffColor2 = buffColor1;
             }
             main.startColor = new ParticleSystem.MinMaxGradient(buffColor1, buffColor2);
         }
         #endregion
 
         // Update special ability timer
-        specialAbilityCooldownTimer -= Time.deltaTime;
+        if (waveInProgress) specialAbilityCooldownTimer -= Time.deltaTime;
         if (specialAbilityCooldownTimer < 0) specialAbilityCooldownTimer = 0;
 
         // Change behavior based on state
@@ -297,14 +300,18 @@ public class Character : MonoBehaviour
     #region Burst Ability Animation
     public void ActivateBurst()
     {
-        if (currentEnergy < currentMaxEnergy) return;
+        // Don't activate if not enough energy or dead
+        if (currentEnergy < currentMaxEnergy 
+            || IsDead() 
+            || !waveInProgress) return;
+        
         StopAllCoroutines();
         GainEnergy(-currentEnergy);
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Burst);
         BurstAnimationHandler.instance.PlayBurstAnimation(characterData.burstAbilityName, 
                                                           characterData.characterSprite, 
                                                           () => {
-            Debug.Log("DO THE THING"); 
+            // Start Burst Ability
             StartCoroutine(BurstAbilityRelease());
         });
     }
@@ -573,4 +580,16 @@ public class Character : MonoBehaviour
         characterSpriteRenderer.color = Color.grey;
         characterStateManager.ChangeState(CharacterStateManager.CharacterState.Dead);
     }
+
+    #region Wave Indicator
+    public void StartWave()
+    {
+        waveInProgress = true;
+    }
+
+    public void EndWave()
+    {
+        waveInProgress = false;
+    }
+    #endregion
 }
