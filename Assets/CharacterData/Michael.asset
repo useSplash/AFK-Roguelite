@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Michael
   characterSprite: {fileID: 21300000, guid: 64c368ae3c0b8c04293006e3ad7bfcfe, type: 3}
+  characterPortrait: {fileID: 21300000, guid: 7be73c3a06cf656459133490fdc0f6f6, type: 3}
   baseHealth: 500
   baseAttackPower: 200
   baseDefense: 200

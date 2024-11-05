@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Croix
   characterSprite: {fileID: 21300000, guid: cddc98f2f04e2be48916a02c3f5bee4d, type: 3}
+  characterPortrait: {fileID: 21300000, guid: f47bafd70418cdd429863337df7ef72e, type: 3}
   baseHealth: 150
   baseAttackPower: 180
   baseDefense: 50

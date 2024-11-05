@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Sen
   characterSprite: {fileID: 21300000, guid: 936e2d10ffaeb944ab412065687af0ee, type: 3}
+  characterPortrait: {fileID: 21300000, guid: 4f1466b80e372144589b8b775babb69d, type: 3}
   baseHealth: 250
   baseAttackPower: 250
   baseDefense: 150

@@ -16,6 +16,7 @@ public class CharacterData : ScriptableObject
     }
     public string characterName;
     public Sprite characterSprite;
+    public Sprite characterPortrait;
 
     [Header("Stats")]
     public int baseHealth;
